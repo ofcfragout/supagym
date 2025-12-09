@@ -22,7 +22,7 @@ interface WorkoutWithProfile {
     avatar_url: string | null
   }
   workout_exercises: {
-    exercise: {
+    exercises: {
       name: string
     }
     sets: number
