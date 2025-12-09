@@ -39,6 +39,7 @@ export default function WorkoutFeed({ userId }: { userId: string }) {
 
   useEffect(() => {
     fetchWorkouts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const fetchWorkouts = async () => {
@@ -62,7 +63,7 @@ export default function WorkoutFeed({ userId }: { userId: string }) {
 
       if (error) throw error
 
-      setWorkouts(data as any || [])
+      setWorkouts((data as WorkoutWithProfile[]) || [])
     } catch (error) {
       console.error('Error fetching workouts:', error)
     } finally {
@@ -155,7 +156,7 @@ export default function WorkoutFeed({ userId }: { userId: string }) {
                 <div className="bg-gray-50 rounded-lg p-3">
                   <p className="text-sm font-medium text-gray-700 mb-2">Exercises:</p>
                   <div className="space-y-1">
-                    {workout.workout_exercises.slice(0, 3).map((we: any, idx: number) => (
+                    {workout.workout_exercises.slice(0, 3).map((we, idx: number) => (
                       <p key={idx} className="text-sm text-gray-600">
                         • {we.exercises?.name || 'Exercise'} - {we.sets} sets
                         {we.reps && ` × ${we.reps} reps`}

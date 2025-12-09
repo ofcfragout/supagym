@@ -80,7 +80,7 @@ export default function WorkoutTracker({ userId }: { userId: string }) {
     setExercises(exercises.filter((_, i) => i !== index))
   }
 
-  const handleUpdateExercise = (index: number, field: string, value: any) => {
+  const handleUpdateExercise = (index: number, field: string, value: number | string | null) => {
     const updated = [...exercises]
     updated[index] = { ...updated[index], [field]: value }
     setExercises(updated)
@@ -198,7 +198,7 @@ export default function WorkoutTracker({ userId }: { userId: string }) {
             </label>
             <select
               value={visibility}
-              onChange={(e) => setVisibility(e.target.value as any)}
+              onChange={(e) => setVisibility(e.target.value as 'public' | 'private' | 'friends')}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="public">Public - Everyone can see</option>
@@ -247,7 +247,7 @@ export default function WorkoutTracker({ userId }: { userId: string }) {
         <CardBody>
           {exercises.length === 0 ? (
             <p className="text-center text-gray-500 py-8">
-              No exercises added yet. Click "Add Exercise" to get started.
+              No exercises added yet. Click &quot;Add Exercise&quot; to get started.
             </p>
           ) : (
             <div className="space-y-4">

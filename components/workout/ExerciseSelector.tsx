@@ -32,10 +32,12 @@ export default function ExerciseSelector({ onSelect, onClose }: ExerciseSelector
 
   useEffect(() => {
     fetchExercises()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     filterExercises()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, selectedMuscleGroup, exercises])
 
   const fetchExercises = async () => {

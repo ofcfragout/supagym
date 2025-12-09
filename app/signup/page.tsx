@@ -39,8 +39,9 @@ export default function SignupPage() {
 
       router.push('/dashboard')
       router.refresh()
-    } catch (err: any) {
-      setError(err.message || 'An error occurred during signup')
+    } catch (err) {
+      const error = err as Error
+      setError(error.message || 'An error occurred during signup')
     } finally {
       setLoading(false)
     }
